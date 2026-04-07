@@ -6,18 +6,18 @@ from sqlalchemy.orm import DeclarativeBase, MappedColumn, mapped_column
 from dotenv import load_dotenv
 load_dotenv()
 
-POSTGRES_USER = os.getenv("POSTGRES_USER", "swapi")
-POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD", "secret")
-POSTGRES_DB = os.getenv("POSTGRES_DB", "swapi")
-POSTGRES_HOST = os.getenv("POSTGRES_HOST", "localhost")
-POSTGRES_PORT = os.getenv("POSTGRES_PORT", "5431")
+POSTGRES_USER = os.getenv("POSTGRES_USER")
+POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD")
+POSTGRES_DB = os.getenv("POSTGRES_DB")
+POSTGRES_HOST = os.getenv("POSTGRES_HOST")
+POSTGRES_PORT = os.getenv("POSTGRES_PORT")
 
 PG_DSN = (
-        f"postgresql+asyncpg://{os.getenv('POSTGRES_USER', 'postgres')}:"
-        f"{os.getenv('POSTGRES_PASSWORD', 'secret')}@"
-        f"{os.getenv('POSTGRES_HOST', 'localhost')}:"
-        f"{os.getenv('POSTGRES_PORT', '5432')}/"
-        f"{os.getenv('POSTGRES_DB', 'swapi')}"
+        f"postgresql+asyncpg://{POSTGRES_USER}:"
+        f"{POSTGRES_PASSWORD}@"
+        f"{POSTGRES_HOST}:"
+        f"{POSTGRES_PORT}/"
+        f"{POSTGRES_DB}"
     )
 
 engine = create_async_engine(PG_DSN)
